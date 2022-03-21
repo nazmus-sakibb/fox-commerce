@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Products, Navbar } from './components';
+import Cart from './components/Cart/Cart';
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -18,41 +19,23 @@ const App = () => {
   }
 
 
-  const fetchCart = async () => {
-    fetch('https://fakestoreapi.com/carts',{
-            method:"POST",
-            body:JSON.stringify(
-                {
-                    userId:5,
-                    products:[{productId:5,quantity:1},{productId:1,quantity:5}]
-                }
-            )
-        })
-            .then(res=>res.json())
-            .then(json=>console.log(json))
-
+  const handleAddToCart = (product) => {
+    cart.push = product;
     setCart(cart);
-  };
-
-
-  const handleAddToCart = async (productId, quantity) => {
-    const item = await cart.add(productId, quantity);
-
-    setCart(item);
+    console.log(cart);
   }
 
 
   useEffect(() => {
     fetchProducts();
-    fetchCart();
+    // fetchCart();
   }, []);
-
-  console.log(cart)
 
   return (
     <div>
       <Navbar />
-      <Products products={products} onAddToCart={handleAddToCart}/>
+      <Cart cart={cart}/>
+      <Products products={products} onAddToCart={handleAddToCart} />
     </div>
   );
 };

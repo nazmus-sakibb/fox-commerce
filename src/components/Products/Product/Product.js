@@ -17,7 +17,7 @@ const Product = ({ product, onAddToCart }) => {
                 <Typography variant="body2" color="textSecondary">{product.description}</Typography>
             </CardContent>
             <CardActions disableSpacing className={classes.CardActions}>
-                <IconButton aria-label="Add to cart" onClick={()=> onAddToCart(product.id, 1)}>Add To Cart <AddShoppingCart /></IconButton>
+                <IconButton aria-label="Add to cart" onClick={()=> onAddToCart(product)}>Add To Cart <AddShoppingCart /></IconButton>
             </CardActions>
         </Card>
     );
